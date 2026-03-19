@@ -1,0 +1,17 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Section from '../components/layout/Section.astro';
+import Container from '../components/layout/Container.astro';
+import Heading from '../components/ui/Heading.astro';
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout>
+  <Section>
+    <Container>
+      <Heading level={1}>{frontmatter.title}</Heading>
+      <slot />
+    </Container>
+  </Section>
+</BaseLayout>

@@ -1,0 +1,12 @@
+---
+import '../../styles/global.css';
+
+const { level = 1, className = '' } = Astro.props;
+
+const safeLevel = Math.min(6, Math.max(1, Number(level)));
+const Tag = `h${safeLevel}` as any;
+---
+
+<Tag class={`heading heading-${safeLevel} ${className}`}>
+  <slot />
+</Tag>

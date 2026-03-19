@@ -1,0 +1,9 @@
+---
+import '../../styles/global.css';
+
+const { className = '' } = Astro.props;
+---
+
+<p class={`text ${className}`}>
+  <slot />
+</p>

@@ -1,0 +1,14 @@
+node_modules
+dist
+.output
+.astro
+.git
+
+# Astro
+# Lockfiles / build artifacts
+package-lock.json
+
+# Tooling / editor
+.vscode
+.idea
+

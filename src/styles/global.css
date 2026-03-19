@@ -1,0 +1,73 @@
+html {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --max-width: 1200px;
+  --space-xxl: 16rem;
+  --space-xl: 8rem;
+  --space-lg: 4rem;
+  --space-md: 2rem;
+  --space-sm: 1rem;
+  --space-xs: 0.5rem;
+  --space-xxs: 0.25rem;
+  --color-background: oklch(0.97 0.00 286);
+  --font-size-base: 1rem;
+  --font-size-lg: 1.5rem;
+  --font-size-xl: 2rem;
+  --font-size-xxl: 3rem;
+
+}
+
+h1 {
+  font-size: var(--font-size-xxl);
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background);
+}
+
+.section {
+  padding-block: var(--space-lg);
+  border-bottom: 1px solid #e0e0e0;
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+.grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-md);
+}
+
+
+.heading {
+  letter-spacing: -0.025em;
+}
+
+.text {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text);
+}

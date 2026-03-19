@@ -1,0 +1,18 @@
+---
+import Container from '../layout/Container.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <Container>
+    <p>&copy; {year} Daniel Derudder. All rights reserved.</p>
+  </Container>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid #e0e0e0;
+    padding-block: 1rem;
+  }
+</style>

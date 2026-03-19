@@ -1,0 +1,50 @@
+---
+import Container from '../layout/Container.astro';
+import Grid from '../layout/Grid.astro';
+
+const links = [
+  { label: 'Home', href: '/' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<nav>
+  <Container>
+    <ul>
+      <Grid>
+        {
+          links.map(({ label, href }) => (
+            <li>
+              <a href={href}>{label}</a>
+            </li>
+          ))
+        }
+      </Grid>
+    </ul>
+  </Container>
+</nav>
+
+<style>
+  nav {
+    padding-block: var(--space-md);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+  }
+
+  li {
+    list-style: none;
+    grid-column: span 2;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+</style>
