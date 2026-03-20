@@ -1,11 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/layout/Section.astro';
+import Container from '../components/layout/Container.astro';
+import Heading from '../components/ui/Heading.astro';
+import type { Project } from '../types';
 
 const pageTitle = 'Projects';
+const projects = Object.values(import.meta.glob("./projects/*.md", {eager: true})) as unknown as { frontmatter: Project, url: string }[]
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h1>{pageTitle}</h1>
+  <Section>
+    <Container>
+      <Heading level={1}>{pageTitle}</Heading>
+      <ul>
+        {projects.map((project) => <li><a href={project.url}>{project.frontmatter.title}</a></li>)}
+      </ul>
+    </Container>
+  </Section>
 </BaseLayout>
 
 <style>

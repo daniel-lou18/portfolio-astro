@@ -2,6 +2,7 @@
 layout: ../../layouts/Project.astro
 title: 'LangSpace AI'
 description: 'A powerful platform that combines state-of-the-art translation technology with the intuitive interface of a professional CAT tool'
+client: 'Archives Généalogiques Andriveau'
 updatedAt: '2026-03-19'
 image:
   url: 'https://docs.astro.build/assets/editor-full-eZxUfqR6.png'
@@ -9,37 +10,37 @@ image:
 tags: ['react', 'node', 'typescript', 'ai', 'postgresql', 'supabase', 'drizzle']
 ---
 
-# All-in-One Translation Hub
+# AI-Powered Translation Workflow Hub
 
-Streamline your document translations with smart tools and visual feedback.
+LangSpace is an end-to-end translation workflow platform focused on quality, speed, and consistency. On this project, I worked on the full-stack experience: from file ingestion and AI-assisted editing to translation memory and multi-format delivery.
 
 ## Features
 
-1. **Document Translation** — Seamless drag-and-drop uploads
-2. **AI CAT Editor** — Real-time semantic matching
-3. **Translation Memory** — Ensure consistent wording
-4. **Content Management** — Easy-to-use workspace
+1. **Document Translation** — drag-and-drop uploads for common business formats
+2. **AI CAT Editor** — semantic matching to speed up review and revision
+3. **Translation Memory (TM)** — reuse prior translations for consistent terminology
+4. **Workspace Management** — organize projects, assets, and outputs in one place
 
-## Support for Multiple Document Formats
+## Supported Formats
 
-Easily import PDFs, Word documents, images, and HTML files — then export your translations as DOCX, PDF, TXT, HTML, CSV, TSV, and more.
+Import PDFs, Word documents, images, and HTML. Export translations to DOCX, PDF, TXT, HTML, CSV, TSV, and more.
 
-## Capabilities
+## Engineering Capabilities
 
-**Document Upload** — Simply drag and drop your documents; our AI agent handles the translation behind the scenes.
+**Document Upload** — route files into an AI-assisted translation pipeline with clear workflow progress.
 
-**Project Dashboard** — Manage all your projects and linguistic assets in one place.
+**Project Dashboard** — manage multiple language assets and project states in a single view.
 
-**Live Preview** — Preview, print, and download your texts instantly.
+**Live Preview** — preview, print, and download outputs quickly for faster turnaround.
 
-**CAT Editor** — Translate like a pro with AI-powered editing, semantic matching, and full-text search.
+**CAT Editor** — AI-powered editing, semantic matching, and full-text search to support developer-grade iteration and QA.
 
-**Translation Memory** — Create and maintain translation memory entries to enhance linguistic consistency.
+**Translation Memory (TM)** — create and maintain TM entries to improve consistency over time.
 
-**Content Delivery** — Download your files in PDF, DOCX, HTML, TXT, CSV, TSV, and more.
+**Content Delivery** — deliver final outputs in formats suitable for downstream teams and tooling.
 
-## Customer Testimonial
+## Testimonial
 
-> "Achieving consistent, high-quality translations shouldn't require complexity. LangSpace delivers the streamlined solution we've always needed."
+> "High-quality translations should be repeatable and consistent, not dependent on manual effort. LangSpace supports our process with AI assistance and translation memory, keeping terminology aligned from draft to delivery."
 >
 > — **Amélie Vermogen**, Archives Généalogiques Andriveau
