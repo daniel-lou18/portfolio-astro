@@ -32,10 +32,12 @@ const variantClass: Record<Variant, string> = {
   .button {
     display: inline-flex;
     align-items: center;
+    justify-content: space-between;
     gap: var(--space-xs);
     padding: var(--space-xs) var(--space-md);
     border-radius: var(--border-radius-md);
-    border: 1px solid transparent;
+    border-width: 1px;
+    border-style: solid;
     cursor: pointer;
     transition: all 0.3s ease;
   }
@@ -50,7 +52,7 @@ const variantClass: Record<Variant, string> = {
   :global(.button-secondary) {
     background-color: var(--color-secondary);
     color: var(--color-primary);
-    border-color: var(--color-secondary);
+    border-color: var(--color-primary);
     &:hover {
       background-color: var(--color-secondary-hover);
     }
@@ -73,5 +75,25 @@ const variantClass: Record<Variant, string> = {
   }
   .button:global(.button-rounded) {
     border-radius: var(--border-radius-rounded);
+  }
+  .button:global(.button-icon) {
+    /* Keep icon-only buttons perfectly square even inside CSS grid rows that stretch items. */
+    --button-icon-size: 3.5rem;
+    padding: 0;
+    width: var(--button-icon-size);
+    height: var(--button-icon-size);
+    gap: 0;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+    align-self: center;
+    flex: 0 0 auto;
+  }
+
+  .button:global(.button-icon) :global(svg) {
+    width: 60%;
+    height: 60%;
+    display: block;
+    flex: 0 0 auto;
   }
 </style>

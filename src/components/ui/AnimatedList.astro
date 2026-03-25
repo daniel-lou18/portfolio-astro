@@ -1,31 +1,135 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 
-type AnimatedListProps = HTMLAttributes<'ul'> & {
+// Allow passing HTML attributes to the *root* element so Astro's scoped
+// styles (and any other attributes like `id`, `aria-*`, etc.) work reliably.
+type AnimatedListProps = HTMLAttributes<'div'> & {
   items: string[];
+  interval?: number;
 };
 
 const {
   items,
+  interval = 2500,
   class: className = '',
   ...attrs
 } = Astro.props as AnimatedListProps;
+
+const extendedItems = [...items, ...items, ...items];
 ---
 
-<ul class:list={['animated-list', className]} {...attrs}>
-  {
-    items.map((item) => (
-      <li>
-        <span>{item}</span>
-      </li>
-    ))
-  }
-</ul>
+<div
+  class:list={['animated-list', className]}
+  data-interval={interval}
+  data-item-count={items.length}
+  {...attrs}
+>
+  <ul class="animated-list__track">
+    {
+      extendedItems.map((item) => (
+        <li class="animated-list__item">
+          <span>{item}</span>
+        </li>
+      ))
+    }
+  </ul>
+</div>
 
 <style>
   .animated-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    position: relative;
+    overflow: hidden;
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 60%,
+      black 40%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 60%,
+      black 40%,
+      transparent 100%
+    );
+  }
+
+  .animated-list__track {
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+  }
+
+  .animated-list__item {
+    text-transform: uppercase;
+    font-size: var(--font-size-xxl);
+    letter-spacing: var(--letter-spacing-wide);
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    padding-block: 0.15em;
   }
 </style>
+
+<script>
+  function initAnimatedLists() {
+    const viewports = document.querySelectorAll<HTMLElement>('.animated-list');
+
+    viewports.forEach((viewport) => {
+      if (viewport.dataset.initialized) return;
+      viewport.dataset.initialized = 'true';
+
+      const track = viewport.querySelector<HTMLElement>(
+        '.animated-list__track',
+      );
+      if (!track) return;
+
+      const itemCount = parseInt(viewport.dataset.itemCount || '0');
+      const interval = parseInt(viewport.dataset.interval || '2500');
+      if (itemCount === 0) return;
+
+      const firstItem = track.querySelector<HTMLElement>(
+        '.animated-list__item',
+      );
+      if (!firstItem) return;
+
+      const itemHeight = firstItem.offsetHeight;
+      viewport.style.height = `${itemHeight * 3}px`;
+
+      let currentIndex = 0;
+      const baseOffset = itemCount;
+
+      function setTranslate(index: number, animate: boolean) {
+        track!.style.transition = animate
+          ? 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)'
+          : 'none';
+        const y = -(baseOffset - 1 + index) * itemHeight;
+        track!.style.transform = `translateY(${y}px)`;
+      }
+
+      setTranslate(0, false);
+      track.offsetHeight;
+
+      setInterval(() => {
+        currentIndex++;
+        setTranslate(currentIndex, true);
+
+        if (currentIndex >= itemCount) {
+          setTimeout(() => {
+            currentIndex = 0;
+            setTranslate(0, false);
+            track.offsetHeight;
+          }, 750);
+        }
+      }, interval);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAnimatedLists);
+  } else {
+    initAnimatedLists();
+  }
+  document.addEventListener('astro:page-load', initAnimatedLists);
+</script>

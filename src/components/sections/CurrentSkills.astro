@@ -1,0 +1,45 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import Grid from '../layout/Grid.astro';
+import Heading from '../ui/Heading.astro';
+import Text from '../ui/Text.astro';
+import AnimatedList from '../ui/AnimatedList.astro';
+
+const currentStack = 'Mon stack actuel';
+const skills = [
+  'React',
+  'Node.js',
+  'JavaScript',
+  'TypeScript',
+  'Serverless',
+  'PostgreSQL',
+  'SQLite',
+  'Drizzle',
+  'Hono',
+  'CF Workers',
+  'TanStack',
+];
+---
+
+<Section class="current-skills">
+  <Container>
+    <Grid class="current-skills-grid">
+      <Heading level={2} class="current-skills-title">{currentStack}</Heading>
+      <AnimatedList class="current-skills-list" items={skills} />
+    </Grid>
+  </Container>
+</Section>
+
+<style>
+  .current-skills-title {
+    grid-column: span 4;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-light);
+    text-transform: uppercase;
+  }
+  .current-skills-list {
+    grid-column-start: 9;
+    grid-column-end: -1;
+  }
+</style>

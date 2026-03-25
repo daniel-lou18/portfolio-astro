@@ -16,16 +16,17 @@ body {
 
 :root {
   --max-width: 1200px;
-  --space-xxl: 16rem;
-  --space-xl: 8rem;
-  --space-lg: 4rem;
-  --space-md: 2rem;
+  --nav-height: 56px;
+  --space-xxl: 12rem;
+  --space-xl: 6rem;
+  --space-lg: 3rem;
+  --space-md: 1.5rem;
   --space-sm: 1rem;
   --space-xs: 0.5rem;
   --space-xxs: 0.25rem;
   --color-primary: oklch(0.205 0 0);
   --color-primary-hover: oklch(0.235 0 0);
-  --color-secondary: oklch(0.97 0 0);
+  --color-secondary: oklch(0.95 0 286);
   --color-secondary-hover: oklch(0.90 0 286);
   --color-tertiary: oklch(0.95 0 286);
   --color-tertiary-hover: oklch(0.90 0 286);
@@ -93,6 +94,7 @@ a {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(var(--space-md), max-content);
   gap: var(--space-md);
 }
 
