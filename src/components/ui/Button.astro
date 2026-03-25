@@ -1,0 +1,77 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Variant = 'primary' | 'secondary' | 'tertiary' | 'link' | 'rounded';
+type ButtonProps = HTMLAttributes<'button'> & {
+  variant?: Variant;
+};
+
+const {
+  class: className = '',
+  variant = 'primary',
+  ...attrs
+}: ButtonProps = Astro.props;
+
+const variantClass: Record<Variant, string> = {
+  primary: 'button-primary',
+  secondary: 'button-secondary',
+  tertiary: 'button-tertiary',
+  link: 'button-link',
+  rounded: 'button-rounded',
+};
+---
+
+<button
+  class:list={[`button ${variantClass[variant as Variant]} ${className}`]}
+  {...attrs}
+>
+  <slot />
+</button>
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--border-radius-md);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  :global(.button-primary) {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    border-color: var(--color-primary);
+    &:hover {
+      background-color: var(--color-primary-hover);
+    }
+  }
+  :global(.button-secondary) {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    border-color: var(--color-secondary);
+    &:hover {
+      background-color: var(--color-secondary-hover);
+    }
+  }
+  :global(.button-tertiary) {
+    background-color: var(--color-tertiary);
+    color: var(--color-primary);
+    border-color: var(--color-tertiary);
+    &:hover {
+      background-color: var(--color-tertiary-hover);
+    }
+  }
+  :global(.button-link) {
+    background-color: var(--color-link);
+    color: var(--color-primary);
+    border-color: var(--color-link);
+    &:hover {
+      background-color: var(--color-link-hover);
+    }
+  }
+  .button:global(.button-rounded) {
+    border-radius: var(--border-radius-rounded);
+  }
+</style>

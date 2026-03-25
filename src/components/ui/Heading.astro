@@ -1,12 +1,19 @@
 ---
-import '../../styles/global.css';
+import type { HTMLAttributes } from 'astro/types';
 
-const { level = 1, className = '' } = Astro.props;
+type HeadingProps = HTMLAttributes<'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'> & {
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
+};
 
-const safeLevel = Math.min(6, Math.max(1, Number(level)));
-const Tag = `h${safeLevel}` as any;
+const {
+  level = 1,
+  class: className = '',
+  ...attrs
+}: HeadingProps = Astro.props;
+
+const Tag = `h${level}`;
 ---
 
-<Tag class={`heading heading-${safeLevel} ${className}`}>
+<Tag class:list={[`heading heading-${level} ${className}`]} {...attrs}>
   <slot />
 </Tag>

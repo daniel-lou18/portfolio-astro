@@ -1,7 +1,11 @@
 ---
-import '../../styles/global.css';
+import type { HTMLAttributes } from 'astro/types';
+
+type GridProps = HTMLAttributes<'div'>;
+
+const { class: className = '', ...attrs }: GridProps = Astro.props;
 ---
 
-<div class="grid">
+<div class:list={['grid', className]} {...attrs}>
   <slot />
 </div>

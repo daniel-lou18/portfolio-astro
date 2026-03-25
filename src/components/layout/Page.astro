@@ -1,7 +1,11 @@
 ---
-import '../../styles/global.css';
+import type { HTMLAttributes } from 'astro/types';
+
+type PageProps = HTMLAttributes<'div'>;
+
+const { class: className = '', ...attrs }: PageProps = Astro.props;
 ---
 
-<div class="page">
+<div class:list={['page', className]} {...attrs}>
   <slot />
 </div>

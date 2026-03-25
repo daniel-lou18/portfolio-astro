@@ -1,7 +1,11 @@
 ---
-import '../../styles/global.css';
+import type { HTMLAttributes } from 'astro/types';
+
+type ContainerProps = HTMLAttributes<'div'>;
+
+const { class: className = '', ...attrs }: ContainerProps = Astro.props;
 ---
 
-<div class="container">
+<div class:list={['container', className]} {...attrs}>
   <slot />
 </div>

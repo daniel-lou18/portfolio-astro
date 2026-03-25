@@ -1,0 +1,70 @@
+---
+import Section from '../layout/Section.astro';
+import Container from '../layout/Container.astro';
+import Heading from '../ui/Heading.astro';
+import Text from '../ui/Text.astro';
+import Grid from '../layout/Grid.astro';
+import Button from '../ui/Button.astro';
+import ArrowRightIcon from '../ui/ArrowRightIcon.astro';
+
+const name = 'Daniel Derudder';
+const jobTitle = 'Développeur';
+const jobTitle2 = 'Full Stack Typescript';
+const description =
+  'Développeur full stack trilingue (FR - NL - EN) basé à Paris. Je crée des applications web et sites internet.';
+---
+
+<Section class="hero">
+  <Container>
+    <Grid>
+      <Heading level={1} class="hero-name">{name}</Heading>
+      <Heading level={2} class="hero-job-title">
+        <span class="hero-job-title-1">{jobTitle}</span><br /><span
+          class="hero-job-title-2">{jobTitle2}</span
+        >
+      </Heading>
+      <Text class="hero-description">
+        {description}
+      </Text>
+      <Button variant="primary" class="hero-button button-rounded"
+        >Télécharger mon CV <ArrowRightIcon /></Button
+      >
+    </Grid>
+  </Container>
+</Section>
+
+<style>
+  .hero-name {
+    grid-column: span 12;
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-light);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+  }
+
+  .hero-job-title {
+    grid-column: span 12;
+    font-size: var(--font-size-xxl);
+    font-weight: var(--font-weight-normal);
+    text-transform: uppercase;
+  }
+  .hero-job-title-1 {
+    letter-spacing: var(--letter-spacing-normal);
+  }
+  .hero-job-title-2 {
+    letter-spacing: var(--letter-spacing-narrow);
+  }
+  .hero-description {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-light);
+    grid-column: span 6;
+    line-height: 1.25;
+  }
+  .hero-button {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    justify-self: start;
+    padding-block: var(--space-sm);
+    font-size: var(--font-size-md);
+  }
+</style>

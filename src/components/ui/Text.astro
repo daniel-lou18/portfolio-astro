@@ -1,9 +1,11 @@
 ---
-import '../../styles/global.css';
+import type { HTMLAttributes } from 'astro/types';
 
-const { className = '' } = Astro.props;
+type TextProps = HTMLAttributes<'p'>;
+
+const { class: className = '', ...attrs }: TextProps = Astro.props;
 ---
 
-<p class={`text ${className}`}>
+<p class:list={[`text ${className}`]} {...attrs}>
   <slot />
 </p>

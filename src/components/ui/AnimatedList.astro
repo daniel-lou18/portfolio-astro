@@ -1,0 +1,31 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type AnimatedListProps = HTMLAttributes<'ul'> & {
+  items: string[];
+};
+
+const {
+  items,
+  class: className = '',
+  ...attrs
+} = Astro.props as AnimatedListProps;
+---
+
+<ul class:list={['animated-list', className]} {...attrs}>
+  {
+    items.map((item) => (
+      <li>
+        <span>{item}</span>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .animated-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+</style>

@@ -1,7 +1,11 @@
 ---
-import '../../styles/global.css';
+import type { HTMLAttributes } from 'astro/types';
+
+type SectionProps = HTMLAttributes<'section'>;
+
+const { class: className = '', ...attrs }: SectionProps = Astro.props;
 ---
 
-<section class="section">
+<section class:list={['section', className]} {...attrs}>
   <slot />
 </section>

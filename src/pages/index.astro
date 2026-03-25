@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Welcome from '../components/Welcome.astro';
+import Hero from '../components/sections/Hero.astro';
+import Section from '../components/layout/Section.astro';
 
 const pageTitle = 'Daniel Derudder - Développeur Full Stack Typescript';
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -8,5 +9,12 @@ const pageTitle = 'Daniel Derudder - Développeur Full Stack Typescript';
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <Welcome />
+  <Hero />
+  <Section class="section" />
 </BaseLayout>
+
+<style>
+  .section {
+    height: 100vh;
+  }
+</style>

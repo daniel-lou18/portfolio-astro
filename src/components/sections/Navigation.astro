@@ -36,6 +36,20 @@ const links = [
   }
 
   li {
-    grid-column: span 2;
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+  }
+
+  li:first-child {
+    grid-column-start: 1;
+  }
+
+  li:nth-child(2) {
+    grid-column-start: 6;
+  }
+
+  li:last-child {
+    grid-column-end: -1;
+    text-align: right;
   }
 </style>
