@@ -27,8 +27,11 @@ const links = [
 
 <style>
   nav {
-    height: var(--nav-height);
-    padding-block: var(--space-md);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--color-border);
+    padding-block: var(--space-sm);
   }
 
   ul {
