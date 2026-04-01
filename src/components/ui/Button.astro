@@ -77,8 +77,7 @@ const variantClass: Record<Variant, string> = {
     border-radius: var(--border-radius-rounded);
   }
   .button:global(.button-icon) {
-    /* Keep icon-only buttons perfectly square even inside CSS grid rows that stretch items. */
-    --button-icon-size: 3.5rem;
+    --button-icon-size: 3rem;
     padding: 0;
     width: var(--button-icon-size);
     height: var(--button-icon-size);
@@ -88,12 +87,36 @@ const variantClass: Record<Variant, string> = {
     justify-self: center;
     align-self: center;
     flex: 0 0 auto;
+    border-radius: 50%;
+    border-color: var(--color-primary);
+    background-color: transparent;
+  }
+
+  .button:global(.button-icon):hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-secondary);
   }
 
   .button:global(.button-icon) :global(svg) {
-    width: 60%;
-    height: 60%;
+    width: 55%;
+    height: 55%;
     display: block;
     flex: 0 0 auto;
+  }
+
+  .button:global(.button-icon) :global(path) {
+    fill: currentColor;
+    fill-opacity: 0;
+    stroke: currentColor;
+    stroke-width: 0.75;
+    transition:
+      fill-opacity 0.3s ease,
+      stroke-width 0.3s ease;
+  }
+
+  .button:global(.button-icon):hover :global(path) {
+    fill-opacity: 1;
+    stroke-width: 0;
   }
 </style>

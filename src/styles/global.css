@@ -16,7 +16,7 @@ body {
 
 :root {
   --max-width: 1200px;
-  --nav-height: 56px;
+  --nav-height: 4.5rem;
   --space-xxl: 12rem;
   --space-xl: 6rem;
   --space-lg: 3rem;
@@ -26,18 +26,20 @@ body {
   --space-xxs: 0.25rem;
   --color-primary: oklch(0.205 0 0);
   --color-primary-hover: oklch(0.235 0 0);
-  --color-secondary: oklch(0.95 0 286);
+  --color-secondary: oklch(1 0 0);
   --color-secondary-hover: oklch(0.90 0 286);
   --color-tertiary: oklch(0.95 0 286);
   --color-tertiary-hover: oklch(0.90 0 286);
   --color-link: oklch(0.95 0 286);
   --color-link-hover: oklch(0.90 0 286);
-  --color-background: oklch(0.95 0 286);
+  --color-background: oklch(1 0 0);
   --color-border: oklch(0.907 0 0); /* #e0e0e0 */
   --font-size-base: 1rem;
   --font-size-lg: 1.5rem;
   --font-size-xl: 2rem;
   --font-size-xxl: 3rem;
+  --font-size-xxxl: 4rem;
+  --font-size-hero: clamp(3rem, 5vw + 1rem, 6rem);
   --font-weight-light: 200;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
